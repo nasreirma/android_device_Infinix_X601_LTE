@@ -22,8 +22,7 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
-# Include OpenGapps
-GAPPS_VARIANT := nano
+
 
 # Bootanimation
 TARGET_BOOTANIMATION_HALF_RES := true

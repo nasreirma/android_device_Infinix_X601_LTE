@@ -997,12 +997,13 @@ service akmd09911 /system/bin/akmd09911
     user system
     group system
     class main
-    
-service mmc3524xd /system/bin/mmc3524xd
+	
+service qmcX983d   /system/bin/qmcX983d
+    disabled
     user system
     group system
     class main
-
+    oneshot
 	
 service mc6470d   /system/bin/mc6470d
     disabled
@@ -1096,13 +1097,20 @@ service conn_launcher /system/bin/6620_launcher -p /system/etc/firmware/
 
 
 
-    
-#A: by wxd for fingerprint 20160307 start
-service fingerprintd /system/bin/fingerprintd
-    class late_start
-    user system
-
-service gx_fpd /system/bin/gx_fpd
+# Fingerprint
+service etsd /system/bin/etsd
     class late_start
     user root
-    group root system
+
+service fingerprintd /system/bin/fingerprintd
+    class late_start
+    user root
+
+#sunwave fingerprint
+service fp /system/bin/fpserver
+    class main
+    user root
+#sunwave fingerprint
+#goodix finger (begin)
+chmod 0660 /dev/goodix_fp
+chown system system /dev/goodix_fp

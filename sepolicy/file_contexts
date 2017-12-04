@@ -126,29 +126,5 @@
 /data/ccci_cfg(/.*)?                                            u:object_r:ccci_cfg_file:s0
 /data/.tp(/.*)?                                                 u:object_r:thermal_manager_data_file:s0
 /data/fuelgauge_datalog.txt                                     u:object_r:fuelgauge_data_file:s0
-/system/bin/fingerprintd u:object_r:fingerprintd_exec:s0
-
-# Fingerprint data
-/data/system/users/[0-9]+/fpdata(/.*)? u:object_r:fingerprintd_data_file:s0
 
 /sys/class/BOOT/BOOT/boot/boot_mode                             u:object_r:sysfs_bootmode:s0
-/dev/teei_fp u:object_r:teei_fp_device:s0
-/system/bin/mmc3524xd u:object_r:mmc3524xd_exec:s0 
-
-#For Goodix fingerprint,add by rulei.zhou
-/dev/madev0     u:object_r:mas_fpd_device:s0
-
-#For Goodix fingerprint,add by rulei.zhou
-/dev/gf66xx-spi     u:object_r:gx_fpd_device:s0
-/dev/ttyACM[0-9]*   u:object_r:gx_fpd_device:s0
-/dev/goodix_fp*     u:object_r:gx_fpd_device:s0
-
-/data/system/fingerprint(/.*)? 	u:object_r:gx_fpd_data_file:s0
-/persist/data/gxfp(/.*)? 	u:object_r:gx_fpd_data_file:s0
-
-/system/bin/gx_fpd 	u:object_r:gx_fpd_exec:s0
-#add by rxd for MMI test end 20160919 
-
-/system/lib64/libfp_client.so      u:object_r:gx_fpd_lib_file:s0
-/system/lib64/libfpservice.so      u:object_r:gx_fpd_lib_file:s0
-/system/lib64/libalgoandroid.so   u:object_r:gx_fpd_lib_file:s0

@@ -1,6 +1,1 @@
 PQ  u:object_r:pq_service:s0
-
-
-#add by rulei.zhou for fingerprint goodix
-goodix.fp                                 u:object_r:gx_fpd_service:s0
-tpgesture                                 u:object_r:user_service:s0
