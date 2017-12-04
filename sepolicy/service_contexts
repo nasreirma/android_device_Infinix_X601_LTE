@@ -1,1 +1,6 @@
 PQ  u:object_r:pq_service:s0
+
+# Fingerprint
+
+goodix.fp                                 u:object_r:gx_fpd_service:s0
+tpgesture                                 u:object_r:user_service:s0

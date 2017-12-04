@@ -27,7 +27,29 @@ on post-fs-data
     mknod /dev/ampc0 c 151 0
     chown bluetooth bluetooth /dev/ampc0
     chmod 0660 /dev/ampc0
+#fingerprint
+#add for fingerprint by rulei.zhou
+	chmod 0660 /dev/goodix_fp
+	chown system system /dev/goodix_fp
+	chmod 0666 /dev/madev0
+	chown system system /dev/madev0
+	chmod 0660 /dev/elan_fp
+	chown system system /dev/elan_fp
+#
+# Connectivity related device nodes & configuration (end)
+#
 
 # Encrypt phone function
     setprop vold.post_fs_data_done 1
+
+#add for fingerprint by rulei.zhou
+service fingerprintd /system/bin/fingerprintd
+	class late_start
+	user system
+
+service gx_fpd /system/bin/gx_fpd
+	user root
+	group root system
+	class late_start
+	oneshot
 

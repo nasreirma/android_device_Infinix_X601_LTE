@@ -171,7 +171,27 @@ on post-fs-data
 
     # Mali 3D GPU driver
     chmod 666 /dev/mali0
+	#liuyang add begin
+    chown root   radio  /sys/class/leds/red/brightness
+    chown root   radio  /sys/class/leds/green/brightness
+    chown root   radio  /sys/class/leds/blue/brightness
+    chown root   radio  /sys/class/leds/breathing-light/brightness
 
+    chown system   system  /sys/class/leds/red/delay_on
+    chown system   system  /sys/class/leds/red/delay_off
+    chmod 0664 /sys/class/leds/red/delay_on
+    chmod 0664 /sys/class/leds/red/delay_off
+
+    chown system   system  /sys/class/leds/green/delay_on
+    chown system   system  /sys/class/leds/green/delay_off
+    chmod 0664 /sys/class/leds/green/delay_on
+    chmod 0664 /sys/class/leds/green/delay_off
+
+    chown system   system  /sys/class/leds/blue/delay_on
+    chown system   system  /sys/class/leds/blue/delay_off
+    chmod 0664 /sys/class/leds/blue/delay_on
+    chmod 0664 /sys/class/leds/blue/delay_off
+    #liuyang add end
     # watch dog kicker
     write /proc/wdk "0 20 30"
 
@@ -523,6 +543,8 @@ on boot
     chown system system /sys/class/leds/keyboard-backlight/trigger
     chown system system /sys/class/leds/jogball-backlight/trigger
     chown system system /sys/class/leds/red/trigger
+    chown system system /sys/class/leds/green/trigger
+    chown system system /sys/class/leds/blue/trigger
     chown system system /sys/class/leds/red/delay_on
     chown system system /sys/class/leds/red/delay_off
     chown system system /sys/class/leds/green/trigger
@@ -594,7 +616,32 @@ on boot
 # define device for EMCSMDLOGGER
     chown system radio /dev/ttyGS3
     chmod 0660 /dev/ttyGS3
+	#liuyang add begin
+    chmod 0777 /sys/class/leds/red/brightness
+    chmod 0777 /sys/class/leds/green/brightness
+    chmod 0777 /sys/class/leds/blue/brightness
+    chown root radio  /sys/class/leds/red/brightness
+    chown root radio  /sys/class/leds/green/brightness
+    chown root radio  /sys/class/leds/blue/brightness
 
+    chown system   system  /sys/class/leds/red/delay_on
+    chown system   system  /sys/class/leds/red/delay_off
+    chmod 0664 /sys/class/leds/red/delay_on
+    chmod 0664 /sys/class/leds/red/delay_off
+
+    chown system   system  /sys/class/leds/green/delay_on
+    chown system   system  /sys/class/leds/green/delay_off
+    chmod 0664 /sys/class/leds/green/delay_on
+    chmod 0664 /sys/class/leds/green/delay_off
+
+    chown system   system  /sys/class/leds/blue/delay_on
+    chown system   system  /sys/class/leds/blue/delay_off
+    chmod 0664 /sys/class/leds/blue/delay_on
+    chmod 0664 /sys/class/leds/blue/delay_off
+
+    chmod 0777 /sys/class/leds/breathing-light/brightness
+    chown root radio  /sys/class/leds/breathing-light/brightness
+#liuyang add end
 #Define device for ATCID
     chmod 660 /dev/ttyGS0
     chown system /dev/ttyGS0
@@ -997,13 +1044,12 @@ service akmd09911 /system/bin/akmd09911
     user system
     group system
     class main
-	
-service qmcX983d   /system/bin/qmcX983d
-    disabled
+    
+service mmc3524xd /system/bin/mmc3524xd
     user system
     group system
     class main
-    oneshot
+
 	
 service mc6470d   /system/bin/mc6470d
     disabled
@@ -1099,12 +1145,14 @@ service conn_launcher /system/bin/6620_launcher -p /system/etc/firmware/
 
 # Fingerprint
 service etsd /system/bin/etsd
-    class late_start
-    user root
-
 service fingerprintd /system/bin/fingerprintd
     class late_start
     user root
+
+service gx_fpd /system/bin/gx_fpd
+    class late_start
+    user root
+    group root system
 
 #sunwave fingerprint
 service fp /system/bin/fpserver
