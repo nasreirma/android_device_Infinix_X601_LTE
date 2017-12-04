@@ -211,3 +211,5 @@ MTK_GPU_VERSION := mali midgard r7p0
 $(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)
 
 USE_NINJA := true
+
+TARGET_PREBUILT_BOOTIMG := $(LOCAL_PATH)/rootdir/boot.img
